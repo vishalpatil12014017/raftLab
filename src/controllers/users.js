@@ -232,7 +232,17 @@ exports.findOne = async (req, res) => {
       );
     }
     let id = req.body.id;
-    const User = await query.getSingle({ id });
+    let token = JSON.parse(req?.token);
+    if (token.id!==id&&token.role!=="ADMIN") {
+      return response.sendResponse(
+        constant.response_code.UNAUTHORIZED,
+        `This role doesn't have access to get this details.`,
+        null,
+        res,
+        errors
+      );
+    }
+    const User = await query.getSingle({ where:{id} });
     if (User == null || !User) {
       return response.sendResponse(
         constant.response_code.NOT_FOUND,
@@ -242,6 +252,7 @@ exports.findOne = async (req, res) => {
         errors
       );
     } else {
+
       return response.sendResponse(
         constant.response_code.SUCCESS,
         "Success.",
