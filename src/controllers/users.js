@@ -40,7 +40,6 @@ const genNewToken = async (payload, res) => {
 
 // Retrieve all Users from the database.
 exports.signUp = async (req, res) => {
-  console.log(req);
   const mobileNo = parseInt(req.body.mobileNo);
   try {
     let errors = await validationResult(req);
@@ -352,6 +351,9 @@ exports.delete = async (req, res) => {
       );
     } else {
       // delete user
+      await verificationQuery.deleteVerification({
+        where: { userId: id },
+      });
       await query.deleteUser({
         where: { id: id },
       });

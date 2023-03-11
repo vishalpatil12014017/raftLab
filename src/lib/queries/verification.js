@@ -23,10 +23,15 @@ getUserVerrificationDetails = async function (query) {
     return await db[constants.DB.table.VERIFICATION_MASTER].findOne(query);
 };
 
+deleteVerification = async function (query) {
+    return await db[constants.DB.table.VERIFICATION_MASTER].destroy(query);
+};
+
 module.exports = {
     createVerifications,
     updateVerifications,
     getUserById,
     getAllVerifications,
-    getUserVerrificationDetails
+    getUserVerrificationDetails,
+    deleteVerification
 };
