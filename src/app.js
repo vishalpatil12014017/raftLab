@@ -21,6 +21,9 @@ app.use("/api", routes);
 
 // db.sequelize.sync({ force: false, alter: false });
 
+
+//Socket.io Namespaces
+
 let Broadcast = io.of("/broadcast");
 let PrivateRoom = io.of("/privateroom");
 app.get("/privateroom", function (req, res) {

@@ -3,13 +3,13 @@ const { authorization,authentication } = require("../middlewares/authorization")
 const users = require("../controllers/users");
 const errors = require("../middlewares/validator/users")
 
-// Create a new User
+// Sign Up And Generate Otp
 router.post("/signUp",errors.POST, users.signUp);
 
-// Retrieve all Users
+// Retrieve all Users with pagination
 router.get("/findall",authentication,authorization, users.findAll);
 
-// Retrieve all Users
+// Retrieve all Users without pagination
 router.get("/findallusers", authentication,authorization, users.findAllWithoutPagination);
 
 // Retrieve a single User with id
@@ -21,7 +21,7 @@ router.put("/update/:id",authentication, errors.PUT, users.update);
 // delete a User with id
 router.delete("/delete/:id",authentication, authorization, users.delete);
 
-// Create a new User
+// Login with Otp
 router.post("/login",errors.LOGIN, users.userLogin);
 
 module.exports = router;
