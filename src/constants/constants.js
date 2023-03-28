@@ -55,6 +55,7 @@ module.exports = {
 	jwt: {
 		SECRET: "secretfortoken",
 		EXPIRE: 86400,
+		ADMIN_TOKEN_EXPIRE:86400*30
 	},
 	string_constants: {
 		SOME_ERROR_OCCURED: "Some error occurred while retrieving data.",
