@@ -26,7 +26,7 @@ app.use("/api", routes);
 
 let Broadcast = io.of("/broadcast");
 let PrivateRoom = io.of("/privateroom");
-app.get("/privateroom", function (req, res) {
+app.get("/broadcast", function (req, res) {
   res.sendFile("./views/index.html", { root: path.join(__dirname) });
 });
 let users = 0;

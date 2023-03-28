@@ -24,7 +24,7 @@
   </body>
   <script>
     function socket() {
-      const socket = io("http://localhost:3000/privateroom", {
+      const socket = io("http://localhost:3000/broadcast", {
         query: { token: document.getElementById("token").value },
       });
 
